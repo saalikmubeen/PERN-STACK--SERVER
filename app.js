@@ -4,12 +4,11 @@ dotenv.config({path: './config.env'});
 var express = require('express');
 var app = express();
 
-const db = require('./db');
+app.use(express.json());
 
-app.get('/:id', async (req, res) => {
-    var data = await db.query(`SELECT * FROM restaurants WHERE id = ${req.params.id}`);
-    res.json({data});
-})
+var restaurantRoutes = require("./routes/restaurantRoutes");
+
+app.use(restaurantRoutes);
 
 
 
