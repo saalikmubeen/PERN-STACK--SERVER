@@ -3,7 +3,9 @@ dotenv.config({path: './config.env'});
 
 var express = require('express');
 var app = express();
+var cors = require("cors");
 
+app.use(cors());
 app.use(express.json());
 
 var restaurantRoutes = require("./routes/restaurantRoutes");
